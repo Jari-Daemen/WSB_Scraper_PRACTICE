@@ -4,6 +4,7 @@ import requests as r
 import bs4 as bs
 
 
+
 active = True
 comments = []
 while active:
@@ -17,7 +18,8 @@ while active:
     if match == None:
         continue
     else:
-        comment = match.find('p', class_="_1qeIAgB0cPwnLhDF9XSiJM")
+        comment = str(match.find('p', class_="_1qeIAgB0cPwnLhDF9XSiJM"))
+        comment = comment [35:-4]
 
         if comment in comments:
             continue
