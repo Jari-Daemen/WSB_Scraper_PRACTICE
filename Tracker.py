@@ -5,6 +5,7 @@ import bs4 as bs
 
 
 active = True
+comments = []
 while active:
     source = r.get('''
     https://www.reddit.com/r/wallstreetbets/comments/mrbmfj/daily_discussion_thread_for_april_15_2021/'''
@@ -17,7 +18,12 @@ while active:
         continue
     else:
         comment = match.find('p', class_="_1qeIAgB0cPwnLhDF9XSiJM")
-        print(comment)
+
+        if comment in comments:
+            continue
+        else:
+            comments.append(comment)
+            print(comment)
 
 
 
