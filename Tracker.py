@@ -3,15 +3,21 @@
 import requests as r
 import bs4 as bs
 
-source = r.get('''
-https://www.reddit.com/r/wallstreetbets/comments/mrbmfj/daily_discussion_thread_for_april_15_2021/'''
-               ).text
 
-soup = bs.BeautifulSoup(source, features='html.parser')
+active = True
+while active:
+    source = r.get('''
+    https://www.reddit.com/r/wallstreetbets/comments/mrbmfj/daily_discussion_thread_for_april_15_2021/'''
+                   ).text
 
-match = soup.find('div', class_="_3tw__eCCe7j-epNCKGXUKk")
+    soup = bs.BeautifulSoup(source, features='html.parser')
 
-print(match)
+    match = soup.find('div', class_="_3tw__eCCe7j-epNCKGXUKk")
+    if match == None:
+        continue
+    else:
+        comment = match.find('p', class_="_1qeIAgB0cPwnLhDF9XSiJM")
+        print(comment)
 
-#print(comment)
-#comment = match.find('p', class_="_1qeIAgB0cPwnLhDF9XSiJM")
+
+
