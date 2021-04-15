@@ -3,17 +3,44 @@
 import requests as r
 import bs4 as bs
 import re
-from collections import  Counter
+from collections import Counter
 from datetime import datetime
 
 active = True
 comments = []
 sub = []
 tickers = []
+start_flag = True
+
+# specify a starting time for the program
+
+while start_flag:
+    start_time = str(datetime.now())
+    start_time = start_time[11:16]
+    if start_time == '23:35':
+        print('The program has begun')
+        start_flag = False
+
+# The full loop
 
 while active:
 
+    time = str(datetime.now())
+    time = time[11:16]
+    print(time)
+
+    # Specify a stopping time
+
+    if time == '23:42':
+        final_list = sorted(occurences.items(), key=lambda x: int(x[0]))
+        final_list = sorted(final_list, reverse=True)
+        print(final_list)
+        print('The program has finished')
+        break
+
     # source and class may need to be adjusted (automatically)
+
+    # link has to be replaced every page, classes are constant
 
     source = r.get('''
     https://www.reddit.com/r/wallstreetbets/comments/mrbmfj/daily_discussion_thread_for_april_15_2021/'''
@@ -42,28 +69,15 @@ while active:
                 comments.remove(comment)
                 sub.append(comment)
 
-
                 for ticker in tmp:
-
                     tickers.append(ticker)
                     print(tickers)
                     occurences = Counter(tickers)
                     print(occurences)
 
+# prints the final list of tuples in descending key value
 
 
-                time = str(datetime.now())
-                print(time)
-                if time == '2021-04-15 23:20:00.000000':
-                    final_list = sorted(occurences.items(), key=lambda x: int(x[0]))
-                    final_list = sorted(final_list, reverse=True)
-                    print(final_list)
-                    break
-
-#prints the final list of tuples in descending key value
-
-
-
-    #final_list = sorted(occurences.items(), key=lambda x: int(x[0]))
-    #final_list = sorted(final_list, reverse=True)
-    #print(final_list)
+# final_list = sorted(occurences.items(), key=lambda x: int(x[0]))
+# final_list = sorted(final_list, reverse=True)
+# print(final_list)
