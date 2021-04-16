@@ -4,6 +4,7 @@ The program only scans for fully capitalized tickers (eg. AAPL), not for stocks 
 The link of the daily discussion thread has to be manually inserted on line 45.
 You can specify a starting and stopping time on line 22 and 35 respectively.
 If you don't specify a correct stopping time, the program will run indefinitely, so it can be used as a live feed.
+Remove line 63 if you only want the ticker tracking and not the live feed.
 
 The program prints the amount of mentions per ticker in ascending order (alphabetically)
 eg. (AAPL, 1),(AXX, 200), (TSLA, 5)
