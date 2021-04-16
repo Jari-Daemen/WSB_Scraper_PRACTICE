@@ -25,7 +25,7 @@ while start_flag:
     start_time = str(datetime.now())
     start_time = start_time[11:16]
 
-    if start_time == '10:02':
+    if start_time == '10:32':
         print('The program has begun')
         start_flag = False
 
@@ -40,7 +40,7 @@ while active:
 
     # Specify a stopping time
 
-    if time == '11:02':
+    if time == '10:58':
         final_list = sorted(occurences.items(), key=lambda x: int(x[0]))
         final_list = sorted(final_list, reverse=True)
         print(final_list)
@@ -58,7 +58,7 @@ while active:
     # link has to be replaced every page, classes are constant
 
     source = r.get('''
-    https://www.reddit.com/r/wallstreetbets/comments/mrbmfj/daily_discussion_thread_for_april_15_2021/'''
+    https://www.reddit.com/r/wallstreetbets/comments/mrms60/what_are_your_moves_tomorrow_april_16_2021/'''
                    ).text
 
     soup = bs.BeautifulSoup(source, features='html.parser')
